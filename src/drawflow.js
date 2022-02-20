@@ -1475,7 +1475,11 @@ export default class Drawflow {
                     }
                     target = target[keys[index]];
                 }
-                target[keys[keys.length - 1]] = event.target.value;
+                if(event.target.type == "checkbox") {
+                    target[keys[keys.length - 1]] = event.target.checked;
+                } else {
+                    target[keys[keys.length - 1]] = event.target.value;
+                }
                 if(event.target.isContentEditable) {
                   target[keys[keys.length - 1]] = event.target.innerText;
                 }
